@@ -1,14 +1,26 @@
 let humanScore = 0;
 let computerScore = 0;
 
+// Check for null input
+function checkForNull(inputFromPrompt) {
+    if (inputFromPrompt === null) {
+        console.log("Goodbye!");
+        alert("Goodbye!");
+    }
+}
+
 // Prompt player for input
 function getHumanChoice() {
-    let humanChoice = prompt("Choose one: rock, paper, or scissors.").toLowerCase();
+    let humanChoice = prompt("Choose one: rock, paper, or scissors.")
+    checkForNull(humanChoice);
+    humanChoice = humanChoice.toLowerCase();
     while (humanChoice !== "rock" &&
         humanChoice !== "paper" &&
         humanChoice !== "scissors" &&
         humanChoice !== "lava") {
-        humanChoice = prompt("Try again. You must choose rock, paper, or scissors.").toLowerCase();
+        humanChoice = prompt("Try again. You must choose rock, paper, or scissors.")
+        checkForNull(humanChoice);
+        humanChoice = humanChoice.toLowerCase();
     }
     return humanChoice;
 }
@@ -71,9 +83,13 @@ function playGame() {
 
 // Ask if a new game should be played
 function playAgain() {
-    let newGame = prompt("Would you like to play again? Yes or no?").toLowerCase();
+    let newGame = prompt("Would you like to play again? Yes or no?");
+    checkForNull(newGame);
+    newGame = newGame.toLowerCase();
     while (newGame !== "yes" && newGame !== "no") {
         newGame = prompt("You must choose yes or no.");
+        checkForNull(newGame);
+        newGame = newGame.toLowerCase();
     }
     if (newGame === "yes") {
         humanScore = 0;
