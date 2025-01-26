@@ -58,7 +58,6 @@ function playRound(humanChoice,computerChoice) {
         ++computerScore;
         alert(`You lose! The computer's ${computerChoice} beats your ${humanChoice}!`);
     }
-    console.log(`Player wins: ${humanScore} | Computer wins: ${computerScore}`);
     alert(`Player wins: ${humanScore} | Computer wins: ${computerScore}`);
 }
 
