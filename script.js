@@ -4,6 +4,12 @@ let computerScore = 0;
 // Prompt player for input
 function getHumanChoice() {
     let humanChoice = prompt("Choose one: rock, paper, or scissors.").toLowerCase();
+    while (humanChoice !== "rock" &&
+        humanChoice !== "paper" &&
+        humanChoice !== "scissors" &&
+        humanChoice !== "lava") {
+        humanChoice = prompt("Try again. You must choose rock, paper, or scissors.").toLowerCase();
+    }
     return humanChoice;
 }
 
@@ -35,6 +41,10 @@ function playRound(humanChoice,computerChoice) {
         ++humanScore;
         console.log(`You win! Your ${humanChoice} beats the computer's ${computerChoice}!`);
         alert(`You win! Your ${humanChoice} beats the computer's ${computerChoice}!`);
+    } else if (humanChoice === "lava") {
+        console.log("You win the whole game! Lava beats everything!");
+        alert("You win the whole game! Lava beats everything!");
+        humanScore = 100000000;
     } else {
         ++computerScore;
         console.log(`You lose! The computer's ${computerChoice} beats your ${humanChoice}!`);
@@ -50,11 +60,11 @@ function playGame() {
         playRound(getHumanChoice(),getComputerChoice());
     }
     if (humanScore > computerScore) {
-        console.log("You win!");
-        alert("You win the game!");
+        console.log("You won the game!");
+        alert("You won the game!");
     } else {
-        console.log("You lose!");
-        alert("You lose the game!");
+        console.log("You lost the game!");
+        alert("You lost the game!");
     }
     playAgain();
 }
@@ -62,9 +72,14 @@ function playGame() {
 // Ask if a new game should be played
 function playAgain() {
     let newGame = prompt("Would you like to play again? Yes or no?").toLowerCase();
+    while (newGame !== "yes" && newGame !== "no") {
+        newGame = prompt("You must choose yes or no.");
+    }
     if (newGame === "yes") {
         humanScore = 0;
         computerScore = 0;
+        console.log("Great! Let's begin...");
+        alert("Great! Let's begin...");
         playGame();
     } else {
         console.log("Goodbye!");
