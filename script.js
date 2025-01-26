@@ -73,5 +73,4 @@ function playAgain() {
 }
 
 // Begin!
-
 playGame();
