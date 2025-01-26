@@ -3,8 +3,7 @@ let computerScore = 0;
 
 // Prompt player for input
 function getHumanChoice() {
-    let humanChoice = prompt("Choose one: rock, paper, or scissors");
-    // Validate input??
+    let humanChoice = prompt("Choose one: rock, paper, or scissors.").toLowerCase();
     return humanChoice;
 }
 
@@ -27,7 +26,6 @@ function getComputerChoice() {
 // Increment winning count
 // Declare winning count
 function playRound(humanChoice,computerChoice) {
-    humanChoice = humanChoice.toLowerCase();
     if (humanChoice === computerChoice) {
         console.log(`It's a tie! You and the computer both picked ${humanChoice}!`);
         alert(`It's a tie! You and the computer both picked ${humanChoice}!`);
@@ -48,5 +46,32 @@ function playRound(humanChoice,computerChoice) {
 
 // Repeat
 function playGame() {
-    playRound(getHumanChoice(),getComputerChoice());
+    while (humanScore < 5 && computerScore < 5) {
+        playRound(getHumanChoice(),getComputerChoice());
+    }
+    if (humanScore > computerScore) {
+        console.log("You win!");
+        alert("You win the game!");
+    } else {
+        console.log("You lose!");
+        alert("You lose the game!");
+    }
+    playAgain();
 }
+
+// Ask if a new game should be played
+function playAgain() {
+    let newGame = prompt("Would you like to play again? Yes or no?").toLowerCase();
+    if (newGame === "yes") {
+        humanScore = 0;
+        computerScore = 0;
+        playGame();
+    } else {
+        console.log("Goodbye!");
+        alert("Goodbye!");
+    }
+}
+
+// Begin!
+
+playGame();

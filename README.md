@@ -17,7 +17,7 @@ It should take and validate an input from the player (rock, paper, or scissors),
     - [x] Determine outputs
     - [x] Determine steps between the two
 - [x] Write pseudocode
-- [ ] Write code
+- [x] Write code
     - [x] Divide into small steps/problems
-    - [ ] Solve problems easiest to hardest
+    - [x] Solve problems easiest to hardest
 - [ ] Test (and debug as necessary)
