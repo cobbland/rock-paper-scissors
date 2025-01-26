@@ -20,4 +20,4 @@ It should take and validate an input from the player (rock, paper, or scissors),
 - [x] Write code
     - [x] Divide into small steps/problems
     - [x] Solve problems easiest to hardest
-- [ ] Test (and debug as necessary)
+- [x] Test (and debug as necessary)
