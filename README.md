@@ -11,13 +11,13 @@ It should take and validate an input from the player (rock, paper, or scissors),
     - [x] Create HTML doc and fill with boilerplate and script tag linking to:
     - [x] Create JavaScript doc and print to console to ensure everything works
 - [x] Explain the problem in basic terms to ensure complete understanding
-- [ ] Plan
-    - [ ] Determine if user interface is needed and, if so, what functionality it must have
-    - [ ] Determine inputs
-    - [ ] Determine outputs
-    - [ ] Determine steps between the two
-- [ ] Write pseudocode
+- [x] Plan
+    - [x] Determine if user interface is needed and, if so, what functionality it must have
+    - [x] Determine inputs
+    - [x] Determine outputs
+    - [x] Determine steps between the two
+- [x] Write pseudocode
 - [ ] Write code
-    - [ ] Divide into small steps/problems
+    - [x] Divide into small steps/problems
     - [ ] Solve problems easiest to hardest
 - [ ] Test (and debug as necessary)
