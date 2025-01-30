@@ -21,3 +21,4 @@ It should take and validate an input from the player (rock, paper, or scissors),
     - [x] Divide into small steps/problems
     - [x] Solve problems easiest to hardest
 - [x] Test (and debug as necessary)
+- [x] Add UI
