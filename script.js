@@ -1,32 +1,21 @@
 let humanScore = 0;
 let computerScore = 0;
+let humanChoice;
+let computerChoice;
+let buttons = document.querySelector("#buttons");
+let announcer = document.querySelector("#announcer");
+let scores = document.querySelector("#scores"); 
+let winner = document.createElement("div");
 
-// Check for null input
-function checkForNull(inputFromPrompt) {
-    if (inputFromPrompt === null) {
-        alert("Goodbye!");
-    }
-}
-
-// Prompt player for input
-function getHumanChoice() {
-    let humanChoice = prompt("Choose one: rock, paper, or scissors.")
-    checkForNull(humanChoice);
-    humanChoice = humanChoice.toLowerCase();
-    while (humanChoice !== "rock" &&
-        humanChoice !== "paper" &&
-        humanChoice !== "scissors" &&
-        humanChoice !== "lava") {
-        humanChoice = prompt("Try again. You must choose rock, paper, or scissors.")
-        checkForNull(humanChoice);
-        humanChoice = humanChoice.toLowerCase();
-    }
-    return humanChoice;
-}
+// Start game
+buttons.addEventListener("click", (event) => {
+    humanChoice = event.target.id;
+    playRound(humanChoice,getComputerChoice());
+});
 
 // Generate computer choice
 function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3)
+    computerChoice = Math.floor(Math.random() * 3)
     if (computerChoice === 2) {
         computerChoice = "scissors";
     } else if (computerChoice === 1) {
@@ -43,56 +32,33 @@ function getComputerChoice() {
 // Increment winning count
 // Declare winning count
 function playRound(humanChoice,computerChoice) {
+    winner.textContent = "";
     if (humanChoice === computerChoice) {
-        alert(`It's a tie! You and the computer both picked ${humanChoice}!`);
+        announcer.textContent = "It's a tie!";
     } else if (humanChoice === "rock" && computerChoice === "scissors"
         || humanChoice === "paper" && computerChoice === "rock"
         || humanChoice === "scissors" && computerChoice === "paper") {
         ++humanScore;
-        alert(`You win! Your ${humanChoice} beats the computer's ${computerChoice}!`);
-    } else if (humanChoice === "lava") {
-        alert("You win the whole game! Lava beats everything!");
-        console.log("You cheated. I hope you feel good about yourself.")
-        humanScore = 100000000;
+        announcer.textContent = `You win! Your ${humanChoice} beats the computer's ${computerChoice}!`;
     } else {
         ++computerScore;
-        alert(`You lose! The computer's ${computerChoice} beats your ${humanChoice}!`);
+        announcer.textContent = `You lose! The computer's ${computerChoice} beats your ${humanChoice}!`;
     }
-    alert(`Player wins: ${humanScore} | Computer wins: ${computerScore}`);
-}
-
-// Repeat
-function playGame() {
-    while (humanScore < 5 && computerScore < 5) {
-        playRound(getHumanChoice(),getComputerChoice());
-    }
-    if (humanScore > computerScore) {
-        alert("You won the game!");
-    } else {
-        alert("You lost the game!");
-    }
-    playAgain();
-}
-
-// Ask if a new game should be played
-function playAgain() {
-    let newGame = prompt("Would you like to play again? Yes or no?");
-    checkForNull(newGame);
-    newGame = newGame.toLowerCase();
-    while (newGame !== "yes" && newGame !== "no") {
-        newGame = prompt("You must choose yes or no.");
-        checkForNull(newGame);
-        newGame = newGame.toLowerCase();
-    }
-    if (newGame === "yes") {
+    scores.textContent = `Player wins: ${humanScore} | Computer wins: ${computerScore}`;
+    if (winnerCheck(humanScore,computerScore)) {
         humanScore = 0;
         computerScore = 0;
-        alert("Great! Let's begin...");
-        playGame();
-    } else {
-        alert("Goodbye!");
-    }
-}
+    };
+};
 
-// Begin!
-playGame();
+function winnerCheck(humanScore,computerScore) {
+    if (humanScore >= 5) {
+        winner.textContent = "You win the game!";
+        scores.parentElement.appendChild(winner);
+        return true;
+    } else if (computerScore >= 5) {
+        winner.textContent = "You lose the game!";
+        scores.parentNode.appendChild(winner);
+        return true;
+    };
+};

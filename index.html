@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js"></script>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
-    <p>Refresh the page to play.</p>
+    <div id="game">
+        <h1>Rock Paper Scissors</h1>
+        <div id="buttons">
+            <button id="rock">Rock</button>
+            <button id="paper">Paper</button>
+            <button id="scissors">Scissors</button>
+        </div>
+        <p id="instructions">Click an option above. First to win five rounds, wins the game.</p>
+        <br>
+        <div id="announcer"></div>
+        <br>
+        <div id="scores"></div>
+        <br>
+    </div>
 </body>
 </html>
